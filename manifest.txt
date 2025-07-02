@@ -1,0 +1,177 @@
+Name 									Purpose							Pattern Used
+ApplicationEnvironment.cs					Application can be 
+								configured using this class
+
+GameState.cs							Keeps game associated data					Singleton
+
+DefaultConfiguratin/AlienParameters.cs				parameters for aliens
+
+DefaultConfiguation/ApplicationBounds.cs 			parameters for where 
+								application bounds are
+
+DefaultConfiguration/BulletParameters.cs			parameters for bullets
+
+DefaultConfiguration/CanvasParameters.cs			parameters for canvas
+
+DefaultConfiguration/DefaultAlienOrder.cs			default implementation how
+								aliens should be lined up
+
+DefaultConfiguration/DefaultBoundChecker.cs			checks if the point is in the 
+								bounds of the canvas
+
+DefaultConfiguration/DefaultBulletChooser.cs			default implementation how
+								alien should choose which
+								bullet to throw
+
+DefaultConfiguration/DefaultPlayerControlHandler.cs  		handles player controls from
+								keyboard keys
+
+DefaultConfiguration/HeartBoardParameters.cs			parameters for heart display
+
+DefaultConfiguration/ObstacleParameters.cs			parameters for green obstacles
+
+DefaultConfiguration/PlayerParameters.cs			parameters for player controller
+
+DefaultConfiguration/ScoreBoardParamters.cs			parameters for scoreboard
+
+DefaultConfiguration/UfoParameters.cs				parameters for ufo
+
+DefaultConfiguration/Interfaces/IAlienOrder.cs			interface for how alien order should
+								be chosen
+
+DefaultConfiguration/Interfaces/IBoundChecker.cs		interface for how bounds of the application
+								should be checked
+
+DefaultConfiguration/Interfaces/IBulletChooser.cs		interface for how bullet should be chosen
+
+DefaultConfiguration/Interfaces/IPlayerControlHandler.cs	interface for how player controls should be handled
+
+ActionChain/GenericChainCreator.cs				factory for chain creation, it is generic because		Factory, Builder
+								you can use it to create many types of chains
+								like BulletChain and StartupChain, also uses a
+								reflection trick		
+
+ActionChain/IChainHandler.cs					interface for chain handlers
+
+ActionChain/StartupChainHandlers.cs				enumeration of handlers which are used in application
+								startup
+
+ActionChain/BulletChainHandlers.cs				enumeration of handlers which are used in handling bullet
+								interactions with objects
+
+ActionChain/PlayerBulletChainCreator.cs				service class which is used to create a default BulletChain
+								to handle player bullet interactions
+
+ActionChain/AlienBulletChainCreator.cs				service class which is used to create a default BulletChain
+								to handle alien bullet interactions
+
+ActionChain/BulletChain/BulletChainHandler.cs			abstract class for bullet chain handlers			CoR
+
+ActionChain/BulletChain/BulletAlienContact.cs			chain handler responsible for bullet hitting an alien		CoR
+
+ActionChain/BulletChain/BulletObstacleContact.cs		chain handler responsible for bullet hitting an obstacle	CoR
+
+ActionChain/BulletChain/BulletPlayerContact.cs			chain handler responsible for bullet hitting a player		CoR
+
+ActionChain/BulletChain/BulletOutOfBounds.cs			chain handler responsible for bullet reaching bounds		CoR
+
+ActionChain/BulletChain/BulletUfoContact.cs			chain handler responsible for bullet hitting a UFO		CoR
+
+ActionChain/StartupChain/AlienCombatHandler.cs			chain handler responsible for bullet spawning			CoR
+								from aliens						
+
+ActionChain/StartupChain/AlienTransitionMove.cs			chain handler responsible for alien synchronous movement	CoR
+
+ActionChain/StartupChain/AlienTransitionState.cs		chain handler responsible for aliens changing their state	CoR
+
+ActionChain/StartupChain/CanvasCreation.cs			chain handler responsible for drawing aliens on canvas		CoR
+
+ActionChain/StartupChain/CreateHeartBoard.cs			chain handler responsible for drawing hearts on canvas		CoR
+
+ActionChain/StartupChain/CreateObstacles.cs			chain handler responsible for creating green obstacles		CoR
+
+ActionChain/StartupChain/CreateScoreBoard.cs			chain handler responsible for creating scoreboard		CoR
+
+ActionChain/StartupChain/FinishGame.cs				chain handler responsible for game finishing			CoR
+
+ActionChain/StartupChain/PlayerCreation.cs			chain handler responsible for drawing player controller		CoR
+
+ActionChain/StartupChain/RenderCanvas.cs			chain handler responsible for rendering aliens drawn		CoR
+
+ActionChain/StartupChain/RenderHeartBoard.cs			chain handler responsible for rendering hearts on canvas	CoR
+
+ActionChain/StartupChain/RenderObstacles.cs			chain handler responsible for rendering green obstacles		CoR
+
+ActionChain/StartupChain/RenderPlayer.cs			chain handler responsible for rendering player controller	CoR
+
+ActionChain/StartupChain/RenderScoreBoard.cs			chain handler responsible for rendering scoreboard 		CoR
+
+ActionChain/StartupChain/StartupChainHandler.cs			abstract class for startup chain handlers
+
+ActionChain/StartupChain/UfoHandler.cs				chain handler responsible for UFO creation			CoR
+								on canvas
+
+Figures/RenderedFigure.cs					abstract class defining what rendered figure should have	
+
+Figures/PictureBoxRenderedFigure.cs				abstract class providing some default implementation for
+								picturebox rendered figures
+
+Figures/PictureBoxRenderedAlien.cs				abstract class providing some default implementation for
+								rendered aliens
+
+Figures/ObstacleCreator.cs					service class used for creating obstacle blocks so that they
+								form green obstacles
+
+Figures/IStateChangeable.cs					interface which provides state changing ability
+
+Figures/IThrowable.cs						interface which provides bullet throwing ability
+
+Figures/Enums/BulletType.cs					enumeration for types of bullets
+
+Figures/Enums/FigureTypes.cs					enumeration for types of figures
+
+Figures/Enums/ObstacleBlockType.cs				enumeration for types of obstacle blocks
+
+Figures/ConcreteFigures/Bug.cs					class for one of the aliens
+
+Figures/ConcreteFigures/Squid.cs				class for one of the aliens
+
+Figures/ConcreteFigures/Medusa.cs				class for one of the aliens
+
+Figures/ConcreteFigures/Bullet.cs				class for a bullet
+
+Figures/ConcreteFigures/HeartBoard.cs				class for a heart board
+
+Figures/ConcreteFigures/ObstacleBlock.cs			class for a block of the green obstacle
+
+Figures/ConcreteFigures/PlayerController.cs			class for a player
+
+Figures/ConcreteFigures/ScoreBoard.cs				class for a scoreboard
+
+Figures/ConcreteFigures/Ufo.cs					class for a UFO
+
+Figures/Factories/BugFactory.cs					factory class for a bug						Factory
+
+Figures/Factories/MedusaFactory.cs				factory class for a medusa					Factory
+
+Figures/Factories/SquidFactory.cs				factory class for a squid					Factory
+
+Figures/Factories/PlayerControllerFactory.cs			factory class for a player					Factory
+
+Figures/Factories/UfoFactory.cs					factory class for a UFO						Factory
+
+Figures/Factories/FigureCreator.cs				factory coordinator, uses a reflection trick			Factory
+
+Figures/Factories/IFigureFactory.cs				interface for how a factory class should look like
+
+Form1.cs							builds startup chain in a flexible way
+
+Program.cs							loads the form
+
+
+
+
+
+
+
+
